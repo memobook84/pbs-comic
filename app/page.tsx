@@ -53,6 +53,7 @@ export default function HomePage() {
                     width={150}
                     height={200}
                     className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-200"
+                    loading="lazy"
                   />
                 </div>
                 <h3 className="mt-2 text-xs text-center text-gray-800 line-clamp-2 leading-tight">{manga.title}</h3>

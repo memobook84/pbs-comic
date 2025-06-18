@@ -24,6 +24,7 @@ export default function MangaWorkCard({ work }: MangaWorkCardProps) {
               height={150}
               className="object-cover group-hover:scale-105 transition-transform duration-200"
               onError={() => setImgSrc("/placeholder.svg")}
+              loading="lazy"
             />
           </div>
         </Link>
