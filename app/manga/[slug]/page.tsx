@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Circle } from "lucide-react"
-import { getMangaData } from "@/lib/manga-data"
+import { getMangaData } from "@/lib/manga-data-fixed"
 import { notFound } from "next/navigation"
 import BookmarkButton from '@/components/BookmarkButton'
 import { IMangaVolume } from '@/lib/types'

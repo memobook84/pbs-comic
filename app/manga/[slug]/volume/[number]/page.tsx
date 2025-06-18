@@ -2,7 +2,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Circle, ExternalLink, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react"
-import { getMangaAndVolumeData } from "@/lib/manga-data"
+import { getMangaAndVolumeData } from "@/lib/manga-data-fixed"
 import { notFound } from "next/navigation"
 
 export default async function VolumeDetailPage({ params }: { params: { slug: string; number: string } }) {
@@ -36,7 +36,7 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
         {prevVolume && (
           <Link
             href={`/manga/${slug}/volume/${prevVolume.number}`}
-            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition-all hover:scale-110"
+            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow-lg transition-all hover:scale-110"
           >
             <ChevronLeft className="h-8 w-8 text-gray-800" />
           </Link>
@@ -44,7 +44,7 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
         {nextVolume && (
           <Link
             href={`/manga/${slug}/volume/${nextVolume.number}`}
-            className="fixed right-8 top-1/2 -translate-y-1/2 z-50 bg-white hover:bg-gray-100 rounded-full p-3 shadow-lg transition-all hover:scale-110"
+            className="fixed right-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow-lg transition-all hover:scale-110"
           >
             <ChevronRight className="h-8 w-8 text-gray-800" />
           </Link>
