@@ -25,8 +25,8 @@ export default function HomePage() {
   return (
     <div className="min-h-screen bg-white">
       <div className="flex max-w-7xl mx-auto">
-        {/* Sidebar */}
-        <aside className="w-48 bg-gray-50 min-h-screen p-4">
+        {/* Sidebar: モバイルでは非表示 */}
+        <aside className="w-48 bg-gray-50 min-h-screen p-4 hidden md:block">
           <nav>
             <ul className="space-y-1">
               {sidebarCategories.map((category, index) => (
@@ -42,8 +42,8 @@ export default function HomePage() {
 
         {/* Main Content */}
         <main className="flex-1 p-6">
-          {/* Manga Grid - 5 columns x 20 rows = 100 manga */}
-          <div className="grid grid-cols-5 gap-4 mb-8">
+          {/* Manga Grid - モバイル2列, タブレット3列, PC5列 */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
             {displayManga.map((manga) => (
               <Link key={manga.id} href={`/manga/${manga.slug}`} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
@@ -61,8 +61,8 @@ export default function HomePage() {
             ))}
           </div>
 
-          {/* Pagination */}
-          <div className="flex justify-center mt-8 space-x-2">
+          {/* Pagination: モバイルでは非表示 */}
+          <div className="flex justify-center mt-8 space-x-2 hidden md:flex">
             <Button variant="outline" size="sm" className="w-8 h-8 p-0">
               1
             </Button>
