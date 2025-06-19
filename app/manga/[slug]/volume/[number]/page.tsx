@@ -31,12 +31,12 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto p-6 relative">
+      <div className="max-w-7xl mx-auto px-2 py-6 md:px-6 relative">
         {/* Navigation Arrows */}
         {prevVolume && (
           <Link
             href={`/manga/${slug}/volume/${prevVolume.number}`}
-            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow-lg transition-all hover:scale-110"
+            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-none py-14 shadow-lg transition-all hover:scale-110"
           >
             <ChevronLeft className="h-8 w-8 text-gray-800" />
           </Link>
@@ -44,7 +44,7 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
         {nextVolume && (
           <Link
             href={`/manga/${slug}/volume/${nextVolume.number}`}
-            className="fixed right-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-full p-3 shadow-lg transition-all hover:scale-110"
+            className="fixed right-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-none py-14 shadow-lg transition-all hover:scale-110"
           >
             <ChevronRight className="h-8 w-8 text-gray-800" />
           </Link>

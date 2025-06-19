@@ -16,7 +16,7 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
 
   return (
     <div className="min-h-screen bg-white">
-      <div className="max-w-7xl mx-auto p-6">
+      <div className="max-w-7xl mx-auto px-2 py-6 md:px-6">
         {/* Hero Section */}
         <div className="flex flex-col md:flex-row gap-6 mb-8">
           {/* Left: Cover Image */}

@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { Search, User, Bookmark, Heart, ShoppingCart } from "lucide-react"
+import { Search, User, Bookmark, Heart, ShoppingCart, Home } from "lucide-react"
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
@@ -8,7 +8,7 @@ export function SiteHeader() {
     <header className="bg-[#006141] text-white px-4 py-3">
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-4">
-          <Link href="/" className="text-3xl font-bold">
+          <Link href="/" className="text-3xl font-bold hidden sm:block">
             Phobos Comic
           </Link>
         </div>
@@ -25,11 +25,13 @@ export function SiteHeader() {
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700" asChild>
               <Link href="/bookmarks">
-                <Bookmark className="h-4 w-4" />
+                <Heart className="h-4 w-4" />
               </Link>
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700">
-              <Heart className="h-4 w-4" />
+              <Link href="/">
+                <Home className="h-4 w-4" />
+              </Link>
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700">
               <ShoppingCart className="h-4 w-4" />

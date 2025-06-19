@@ -42,8 +42,8 @@ export default function HomePage() {
 
         {/* Main Content */}
         <main className="flex-1 p-6">
-          {/* Manga Grid - モバイル2列, タブレット3列, PC5列 */}
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-5 gap-4 mb-8">
+          {/* Manga Grid - モバイル3列, タブレット3列, PC5列 */}
+          <div className="grid grid-cols-3 md:grid-cols-5 gap-4 mb-8">
             {displayManga.map((manga) => (
               <Link key={manga.id} href={`/manga/${manga.slug}`} className="group cursor-pointer">
                 <div className="relative overflow-hidden rounded-lg shadow-sm hover:shadow-md transition-shadow">
