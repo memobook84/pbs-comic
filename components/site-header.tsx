@@ -21,7 +21,9 @@ export function SiteHeader() {
 
           <div className="flex items-center space-x-2">
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700">
-              <User className="h-4 w-4" />
+              <Link href="/">
+                <Home className="h-4 w-4" />
+              </Link>
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700" asChild>
               <Link href="/bookmarks">
@@ -29,9 +31,7 @@ export function SiteHeader() {
               </Link>
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700">
-              <Link href="/">
-                <Home className="h-4 w-4" />
-              </Link>
+              <User className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="sm" className="text-white hover:bg-blue-700">
               <ShoppingCart className="h-4 w-4" />
