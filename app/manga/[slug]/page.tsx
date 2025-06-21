@@ -49,29 +49,31 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
 
         <p className="text-sm text-gray-700 mb-6 leading-relaxed">{manga.description}</p>
 
-        {/* Info Table */}
-        <div className="overflow-x-auto mb-8">
-          <table className="w-full border-collapse border border-gray-300">
-            <tbody>
-              <tr>
-                <td className="border border-gray-300 bg-gray-100 px-4 py-2 w-24 text-sm">作者</td>
-                <td className="border border-gray-300 px-4 py-2 text-sm">
-                  <Link href={`/author/${manga.authorSlug}`} className="text-blue-600 hover:underline">
-                    {manga.author}
-                  </Link>
-                </td>
-                <td className="border border-gray-300 bg-gray-100 px-4 py-2 w-24 text-sm">連載期間</td>
-                <td className="border border-gray-300 px-4 py-2 text-sm">{manga.years}</td>
-                <td className="border border-gray-300 bg-gray-100 px-4 py-2 w-24 text-sm">巻数</td>
-                <td className="border border-gray-300 px-4 py-2 text-sm">{manga.volumeCount}</td>
-                <td className="border border-gray-300 bg-gray-100 px-4 py-2 w-24 text-sm">評価</td>
-                <td className="border border-gray-300 px-4 py-2 text-sm flex items-center">
-                  <span className="mr-1">{manga.rating}</span>
-                  <span className="text-yellow-500">★★★★★</span>
-                </td>
-              </tr>
-            </tbody>
-          </table>
+        {/* Info Grid */}
+        <div className="grid grid-cols-2 gap-4 mb-8 md:grid-cols-4 md:gap-6 md:border md:border-gray-200 md:p-4 rounded-lg">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+            <p className="text-xs font-semibold text-gray-500">作者</p>
+            <p className="text-sm">
+              <Link href={`/author/${manga.authorSlug}`} className="text-blue-600 hover:underline">
+                {manga.author}
+              </Link>
+            </p>
+          </div>
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+            <p className="text-xs font-semibold text-gray-500">連載期間</p>
+            <p className="text-sm">{manga.years}</p>
+          </div>
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+            <p className="text-xs font-semibold text-gray-500">巻数</p>
+            <p className="text-sm">{manga.volumeCount}</p>
+          </div>
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+            <p className="text-xs font-semibold text-gray-500">評価</p>
+            <div className="flex items-center text-sm">
+              <span className="mr-1">{manga.rating}</span>
+              <span className="text-yellow-500">★★★★★</span>
+            </div>
+          </div>
         </div>
 
         {/* Volumes Grid */}
