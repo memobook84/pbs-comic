@@ -9,7 +9,7 @@ export function SiteHeader() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-4">
           <Link href="/" className="text-3xl font-bold hidden sm:block">
-            Phobos Comic
+            PBS COMIC
           </Link>
         </div>
 
