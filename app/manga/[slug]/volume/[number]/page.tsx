@@ -36,17 +36,17 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
         {prevVolume && (
           <Link
             href={`/manga/${slug}/volume/${prevVolume.number}`}
-            className="fixed left-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-none py-14 shadow-lg transition-all hover:scale-110"
+            className="fixed left-4 top-1/2 -translate-y-1/2 z-50 transition-transform hover:scale-125"
           >
-            <ChevronLeft className="h-8 w-8 text-gray-800" />
+            <ChevronLeft className="h-10 w-10 text-gray-600 drop-shadow-md" />
           </Link>
         )}
         {nextVolume && (
           <Link
             href={`/manga/${slug}/volume/${nextVolume.number}`}
-            className="fixed right-8 top-1/2 -translate-y-1/2 z-50 bg-gray-200 hover:bg-gray-300 rounded-none py-14 shadow-lg transition-all hover:scale-110"
+            className="fixed right-4 top-1/2 -translate-y-1/2 z-50 transition-transform hover:scale-125"
           >
-            <ChevronRight className="h-8 w-8 text-gray-800" />
+            <ChevronRight className="h-10 w-10 text-gray-600 drop-shadow-md" />
           </Link>
         )}
 
