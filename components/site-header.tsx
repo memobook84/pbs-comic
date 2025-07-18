@@ -9,7 +9,9 @@ export function SiteHeader() {
       <div className="flex items-center justify-between max-w-7xl mx-auto">
         <div className="flex items-center space-x-4">
           <Link href="/" className="text-3xl font-bold hidden sm:block">
-            PBS COMIC
+            <span className="bg-white text-[#006141] px-4 py-1 rounded-full border-4 border-[#006141] shadow font-bold text-3xl inline-block">
+              Moss Comic
+            </span>
           </Link>
         </div>
 

@@ -24,9 +24,9 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
             <Image
               src={manga.image || "/placeholder.svg"}
               alt={manga.title}
-              width={220}
-              height={300}
-              className="rounded-lg shadow-md"
+              width={275}
+              height={375}
+              className="rounded-md shadow-md"
             />
             <BookmarkButton
               slug={manga.slug}
@@ -49,9 +49,10 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
 
         <p className="text-sm text-gray-700 mb-6 leading-relaxed">{manga.description}</p>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-8 md:grid-cols-4 md:gap-6 md:border md:border-gray-200 md:p-4 rounded-lg">
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+        {/* Info Grid（PCはテーブル、スマホは従来のグリッド） */}
+        {/* スマホ用: 既存のdivグリッド */}
+        <div className="grid grid-cols-2 gap-4 mb-8 md:hidden">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">作者</p>
             <p className="text-sm">
               <Link href={`/author/${manga.authorSlug}`} className="text-blue-600 hover:underline">
@@ -59,20 +60,48 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
               </Link>
             </p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">連載期間</p>
             <p className="text-sm">{manga.years}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">巻数</p>
             <p className="text-sm">{manga.volumeCount}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">評価</p>
             <div className="flex items-center text-sm">
               <span className="mr-1">{manga.rating}</span>
               <span className="text-yellow-500">★★★★★</span>
             </div>
+          </div>
+        </div>
+        {/* PC用: 作者ページと同じテーブルデザイン */}
+        <div className="hidden md:block mb-8">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-300 max-w-4xl">
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">作者</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">
+                    <Link href={`/author/${manga.authorSlug}`} className="text-blue-600 hover:underline">
+                      {manga.author}
+                    </Link>
+                  </td>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">連載期間</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{manga.years}</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">巻数</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{manga.volumeCount}</td>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">評価</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">
+                    <span className="mr-1">{manga.rating}</span>
+                    <span className="text-yellow-500">★★★★★</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
@@ -90,7 +119,7 @@ export default async function MangaDetailPage({ params }: { params: { slug: stri
                   alt={`${manga.title} ${volume.number}巻`}
                   width={150}
                   height={225}
-                  className="rounded-lg shadow-md object-cover transition-transform group-hover:scale-105"
+                  className="rounded-md shadow-md object-cover transition-transform group-hover:scale-105"
                   sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, 16vw"
                 />
               </div>

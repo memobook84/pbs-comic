@@ -52,7 +52,7 @@ export default function HomePage() {
                     alt={manga.title}
                     width={150}
                     height={200}
-                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-200"
+                    className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-200 rounded-md"
                     loading="lazy"
                   />
                 </div>

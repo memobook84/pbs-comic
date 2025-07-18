@@ -7,7 +7,7 @@ import { SiteHeader } from '@/components/site-header'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Phobos Comic',
+  title: 'Moss Comic',
   description: '人気のマンガ作品を紹介するホームページです。',
   icons: {
     icon: '/favicon.jpg',

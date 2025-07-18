@@ -20,8 +20,7 @@ export default async function AuthorDetailPage({ params }: { params: { slug: str
       <div className="max-w-7xl mx-auto px-2 py-6 md:px-6">
         {/* Author Header */}
         <div className="mb-8">
-          <h1 className="text-3xl font-bold mb-2">{author.name}</h1>
-          <h2 className="text-base text-gray-600 mb-4">{author.nameRomaji}</h2>
+          <h1 className="text-3xl font-bold mb-6 mt-8">{author.name}</h1>
           <p className="text-gray-700 leading-relaxed max-w-4xl">{author.description}</p>
         </div>
 

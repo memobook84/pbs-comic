@@ -1,7 +1,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
-import { Circle, ExternalLink, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react"
+import { Circle, ExternalLink, ArrowLeft, ArrowRight, ShoppingCart } from "lucide-react"
 import { getMangaAndVolumeData } from "@/lib/manga-data-fixed"
 import { notFound } from "next/navigation"
 
@@ -38,7 +38,12 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
             href={`/manga/${slug}/volume/${prevVolume.number}`}
             className="fixed left-4 top-1/2 -translate-y-1/2 z-50 transition-transform hover:scale-125"
           >
-            <ChevronLeft className="h-10 w-10 text-gray-600 drop-shadow-md" />
+            <span className="inline-block">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="19" fill="transparent" stroke="#bbb" strokeWidth="2"/>
+                <path d="M23 13L16 20L23 27" stroke="#222" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
           </Link>
         )}
         {nextVolume && (
@@ -46,7 +51,12 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
             href={`/manga/${slug}/volume/${nextVolume.number}`}
             className="fixed right-4 top-1/2 -translate-y-1/2 z-50 transition-transform hover:scale-125"
           >
-            <ChevronRight className="h-10 w-10 text-gray-600 drop-shadow-md" />
+            <span className="inline-block">
+              <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="20" cy="20" r="19" fill="transparent" stroke="#bbb" strokeWidth="2"/>
+                <path d="M17 13L24 20L17 27" stroke="#222" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            </span>
           </Link>
         )}
 
@@ -73,9 +83,9 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
               <Image
                 src={volume.image || "/placeholder.svg"}
                 alt={`${manga.title} 巻 ${volume.number}`}
-                width={220}
-                height={300}
-                className="rounded-lg shadow-md"
+                width={275}
+                height={375}
+                className="rounded-md shadow-md"
               />
             </div>
           </div>
@@ -112,21 +122,22 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
           {volume.description || `${manga.title}の第${volume.number}巻です。`}
         </p>
 
-        {/* Info Grid */}
-        <div className="grid grid-cols-2 gap-4 mb-8 md:grid-cols-3 md:border md:border-gray-200 md:p-4 rounded-lg">
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+        {/* Info Grid（PCはテーブル、スマホは従来のグリッド） */}
+        {/* スマホ用: 既存のdivグリッド */}
+        <div className="grid grid-cols-2 gap-4 mb-8 md:hidden">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">タイトル</p>
             <p className="text-sm">{volume.title}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">発売日</p>
             <p className="text-sm">{volume.releaseDate}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">ページ数</p>
             <p className="text-sm">{volume.pages}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">作者</p>
             <p className="text-sm">
               <Link href={`/author/${volume.authorSlug}`} className="text-blue-600 hover:underline">
@@ -134,16 +145,50 @@ export default async function VolumeDetailPage({ params }: { params: { slug: str
               </Link>
             </p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">出版社</p>
             <p className="text-sm">{volume.publisher}</p>
           </div>
-          <div className="flex flex-col p-2 rounded-lg bg-gray-50 md:bg-transparent md:p-0">
+          <div className="flex flex-col p-2 rounded-lg bg-gray-50">
             <p className="text-xs font-semibold text-gray-500">評価</p>
             <div className="flex items-center text-sm">
               <span className="mr-1">{volume.rating}</span>
               <span className="text-yellow-500">★★★★★</span>
             </div>
+          </div>
+        </div>
+        {/* PC用: 作品ページと同じテーブルデザイン（2行4列） */}
+        <div className="hidden md:block mb-8">
+          <div className="overflow-x-auto">
+            <table className="w-full border-collapse border border-gray-300 max-w-4xl">
+              <tbody>
+                <tr>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">タイトル</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{volume.title}</td>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">発売日</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{volume.releaseDate}</td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">ページ数</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{volume.pages}</td>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">作者</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">
+                    <Link href={`/author/${volume.authorSlug}`} className="text-blue-600 hover:underline">
+                      {volume.author}
+                    </Link>
+                  </td>
+                </tr>
+                <tr>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">出版社</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">{volume.publisher}</td>
+                  <td className="border border-gray-300 bg-gray-100 px-4 py-3 w-32 text-sm font-medium">評価</td>
+                  <td className="border border-gray-300 px-4 py-3 text-sm">
+                    <span className="mr-1">{volume.rating}</span>
+                    <span className="text-yellow-500">★★★★★</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
 
